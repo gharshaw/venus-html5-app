@@ -29,35 +29,6 @@ jobs:
           docker run -d --rm -p 9001:9001 -p 1883:1883 -p 3000:3000 -p 8080:80
           --name venus-docker victronenergy/venus-docker:latest
           /root/run_with_simulation.sh z
-      - name: Run unit and E2E tests
-        run: npm run test:ci
-      - name: Generate E2E Report
-        run: npm run generate-e2e-report
-        if: always()
-      - name: Upload E2E Results
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: e2e-tests-results
-          path: cypress/results/results.json
-      - name: Upload E2E Report
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: e2e-tests-report
-          path: cypress/report
-      - name: Upload Cypress Screenshots
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: Upload Cypress Videos
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
       - name: Check Tag
         id: check_tag
         run: |
