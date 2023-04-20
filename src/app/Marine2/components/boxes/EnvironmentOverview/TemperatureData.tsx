@@ -24,9 +24,9 @@ const TemperatureData = ({ dataId, mode, boxSize }: Props) => {
         /* @ts-ignore */
         Icon={ThermometerIcon}
         title={customName}
-        value={temperature}
+        value={(temperature × 9/5) + 32 }
         boxSize={boxSize}
-        unit={"°C"}
+        unit={"°F"}
         valueType={"environment"}
       />
     )
@@ -38,9 +38,9 @@ const TemperatureData = ({ dataId, mode, boxSize }: Props) => {
       /* todo: fix types for svg */
       /* @ts-ignore */
       icon={<ThermometerIcon className={"w-5"} />}
-      value={temperature}
+      value={(temperature × 9/5) + 32}
       bottomValues={[]}
-      unit={"°C"}
+      unit={"°F"}
     />
   )
 }
