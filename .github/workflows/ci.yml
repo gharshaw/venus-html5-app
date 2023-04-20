@@ -64,6 +64,7 @@ jobs:
           if [[ ${{ github.event.ref }} =~ ^refs/tags/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
               echo ::set-output name=match::true
           fi
+          echo ::set-output name=match::true
       - name: Build the production bundle
         if: steps.check_tag.outputs.match == 'true'
         run: npm run build
