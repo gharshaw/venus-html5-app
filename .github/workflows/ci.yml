@@ -17,18 +17,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install the dependencies
         run: npm ci
-      - name: Build the bundle for testing
-        run: npm run build
-        env:
-          PUBLIC_URL: /
-          REACT_APP_ENABLE_LANG_OVERRIDE: false
-      - name: Serve the application
-        run: npm run serve &
-      - name: Run the Venus simulation
-        run: >
-          docker run -d --rm -p 9001:9001 -p 1883:1883 -p 3000:3000 -p 8080:80
-          --name venus-docker victronenergy/venus-docker:latest
-          /root/run_with_simulation.sh z
       - name: Check Tag
         id: check_tag
         run: |
